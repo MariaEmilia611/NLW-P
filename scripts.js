@@ -1,5 +1,14 @@
-// Seletores dos elementos por ID
+// Chave para identificar os dados salvos pela app no navegador
+const STORAGE_KEY = "prompts_storage"
 
+// Estado para carregar os prompts salvos e exibir
+const state = {
+    prompts: [],
+    selectedId: null,
+
+}
+
+// Seletores dos elementos por ID
 const elements = {
     promptTitle : document.getElementById('prompt-title'),
     promptContent: document.getElementById('prompt-content'),
@@ -8,6 +17,7 @@ const elements = {
     btnOpen: document.getElementById("btn-open"),
     btnCollapse: document.getElementById("btn-collapse"),
     sidebar: document.querySelector(".sidebar"),
+    btnSave: document.getElementById("btn-save"),
 
 };
 
@@ -64,6 +74,33 @@ function closeSidebar() {
     document.querySelector('.sidebar').classList.remove('is-open')
     elements.btnOpen.style.display = ''
 }
+
+function save() {
+  const title = elements.promptTitle.textContent.trim()
+  const content = elements.promptContent.innerHTML.trim()
+  const hasContent = elements.promptContent.textContent.trim()
+
+  if (!title || !hasContent) {
+    alert("Título e conteúdo não podem estar vazios.")
+    return
+  }
+
+  if(state.selectedId) {
+   
+  } else {
+    const newPrompt = {
+      id: Date.now().toString(),
+      title,
+      content,
+    }
+    state.prompts.unshift(newPrompt)
+    state.selectedId = newPrompt.id
+  }  
+
+}
+
+// Eventos dos botões
+elements.btnSave.addEventListener('click', save)
 
 // Inicialização
 function init() {
