@@ -7,6 +7,7 @@
   --accent-500: #7878d7;
 
   --alert-600: #ff5c5c;
+  --alert-800: rgb(255, 92, 92, 0.08);
 
   --gray-900: #0d0d0d;
   --gray-800: #111111;
@@ -251,8 +252,8 @@ body {
 }
 
 .prompt-item-title {
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 14px;
   color: var(--white);
   white-space: nowrap;
   overflow: hidden;
@@ -260,7 +261,7 @@ body {
 }
 
 .prompt-item-description {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--gray-100);
   white-space: nowrap;
   overflow: hidden;
@@ -281,11 +282,10 @@ body {
 }
 
 .btn-icon:hover {
-  background-color: rgb(255, 92, 92, 0.08);
+  background-color: var(--alert-800)
 }
 
 .icon-trash {
   width: 20px;
   height: 20px;
-  stroke: var(--alert-600);
 }  
